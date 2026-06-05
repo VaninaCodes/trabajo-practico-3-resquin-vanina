@@ -1,0 +1,18 @@
+/* Importo una fuente para la pagina */
+@import url('https://fonts.googleapis.com/css2?family=Comic+Relief:wght@400;700&display=swap');
+
+/* Descargue una fuente para el titulo */
+@font-face {
+    font-family: 'SimpsonsFont';
+    src: url('/assets/font/Simpsonfont\ DEMO.otf') format('opentype');
+}
+
+body {
+    font-family: "Comic Relief", system-ui;
+    font-weight: 400;
+    font-style: normal;
+}
+
+header h1{
+    font-family: 'SimpsonsFont', sans-serif;
+}
