@@ -47,3 +47,37 @@ const renderizarPersonajes = (lista) => {
 };
 
 cargarPersonajes();
+
+//Buscador
+const inputBuscador = document.querySelector("#inputBuscador")
+const btnBuscador = document.querySelector("#btnBuscador")
+
+const buscar = (arregloPersonajes) => {
+    const texto = inputBuscador.value.toLocaleLowerCase().trim();
+
+     if (texto === "") {
+        alert("Ingrese un nombre para buscar");
+        return;
+    }
+
+    const personajesFiltrados = arregloPersonajes.filter(personaje =>
+        personaje.name.toLowerCase().includes(texto));
+
+        if (personajesFiltrados.length === 0) {
+
+        rowCartas.innerHTML = `
+            <div class="col-12 text-center">
+                <h2>No se encontraron personajes</h2>
+            </div>
+        `;
+
+        return;
+        }
+
+        renderizarPersonajes(personajesFiltrados)
+    }
+
+btnBuscador.addEventListener("click", (e) => {
+    e.preventDefault();
+    buscar(personajes);
+});
