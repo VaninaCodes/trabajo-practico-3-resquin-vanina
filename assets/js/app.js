@@ -1,3 +1,5 @@
+// MODAL
+const contenidoModal = document.getElementById("contenidoModal");
 const urlApiGeneral = "https://thesimpsonsapi.com/api/characters";
 const urlApiIndividual = "https://thesimpsonsapi.com/api/characters/1";
 
@@ -48,7 +50,7 @@ const renderizarPersonajes = (lista) => {
 
 cargarPersonajes();
 
-//Buscador
+//BUSCADOR
 const inputBuscador = document.querySelector("#inputBuscador")
 const btnBuscador = document.querySelector("#btnBuscador")
 
@@ -81,3 +83,72 @@ btnBuscador.addEventListener("click", (e) => {
     e.preventDefault();
     buscar(personajes);
 });
+
+// MODAL
+const mostrarModal = (personaje) => {
+            const imagen = `https://cdn.thesimpsonsapi.com/500${personaje.portrait_path}`;
+            
+            contenidoModal.innerHTML = `
+            <div class="d-flex flex-column align-items-center justify-content-center">
+
+                <img
+                    src="${imagen}"
+                    class="img-fluid mb-3"
+                    style="max-height:300px">
+
+                <h3>${personaje.name}</h3>
+                <div class="text-align-left">
+                    <p><strong>Edad:</strong> ${personaje.age}</p>
+
+                    <p><strong>Fecha de nacimiento:</strong>
+                    ${personaje.birthdate}</p>
+
+                    <p><strong>Género:</strong>
+                    ${personaje.gender}</p>
+
+                    <p><strong>Ocupación:</strong>
+                    ${personaje.occupation}</p>
+
+                    <p><strong>Estado:</strong>
+                    ${personaje.status}</p>
+
+                    <p>
+                        <strong>Frase:</strong>
+                        ${personaje.phrases[0]}
+                    </p>
+                </div>
+            </div>
+        `;
+        const modal = new bootstrap.Modal(
+        document.getElementById("modalPersonaje")
+        );
+
+    modal.show();
+};
+
+// DETALLE MODAL
+const obtenerDetalle = async (id) => {
+    try {
+        const response = await fetch(`https://thesimpsonsapi.com/api/characters/${id}`);
+        
+        const personaje = await response.json();
+
+        //console.log(personaje);
+        mostrarModal(personaje);
+    }
+    catch (error) {
+        console.log(error);
+    }
+};
+
+rowCartas.addEventListener("click", (e) => {
+
+    if (e.target.classList.contains("btn-ver-detalle")) {
+
+        const id = e.target.dataset.id;
+
+        obtenerDetalle(id);
+
+    }
+});
+
