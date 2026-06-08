@@ -22,15 +22,18 @@
 
     <!-- Nav con buscador -->
     <nav class="navbar">
-      <div class="container-fluid">
-        <img src="#" alt="Logo" />
+      <div class="container-fluid d-flex justify-content-center">
+        <a class="navbar-brand" href="#">
+          <img src="assets/img/nav-logo.jfif" alt="logo" width="200" />
+        </a>
         <form class="d-flex" role="search">
           <input
-            class="form-control me-2"
+            class="form-control form-control-lg me-2"
             type="search"
             placeholder="Busca un personaje (Ej: Lisa)"
+            style="min-width: 320px"
           />
-          <button class="btn btn-outline-info" type="submit">Buscar</button>
+          <button class="btn btn-warning btn-lg" type="submit">Buscar</button>
         </form>
       </div>
     </nav>
