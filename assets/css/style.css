@@ -20,6 +20,7 @@ header{
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    padding: 15px;
 }
 
 header h1{
@@ -40,6 +41,14 @@ nav{
     background-color: white;
     width: auto;
 }
+#btnBuscador{
+    background-color: #FB7DAB;
+    color: white;
+}
+#btnBuscador:hover{
+    color:black;
+    background-color: #FFD521;
+}
 
 main{
     display: flex;
@@ -48,6 +57,7 @@ main{
     align-items: center;
     gap: 10px;
     padding: 25px;
+    background: linear-gradient(to bottom, white, #FB7DAB);
 }
 
 .card-simpson:hover{
